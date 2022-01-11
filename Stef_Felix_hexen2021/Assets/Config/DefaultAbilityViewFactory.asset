@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907605a21a4b04d47b813bda59bc9a88, type: 3}
+  m_Name: DefaultAbilityViewFactory
+  m_EditorClassIdentifier: 
+  _abilityViews:
+  - {fileID: 8181907196083400, guid: 30634de0de92bab449958dd9ecac477e, type: 3}
+  - {fileID: 8181907196083400, guid: d688cfec29746584aafba6e3d6d8042c, type: 3}
+  - {fileID: 8181907196083400, guid: d36924f6c033c8644a8833aca5bda56b, type: 3}
+  - {fileID: 7180808833972202498, guid: 284bd9bf7f02c464f8d3ca3d4bb544b0, type: 3}
+  _abilityNames:
+  - ForwardAttack
+  - Knockback
+  - SwingAttack
+  - Teleport
