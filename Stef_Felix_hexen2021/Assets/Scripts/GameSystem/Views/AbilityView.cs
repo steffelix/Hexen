@@ -29,7 +29,7 @@ namespace GameSystem.Views
 
         public void OnEndDrag(PointerEventData eventData)
         {
-
+            GameLoop.Instance.OnAbilityReleasedEmpty();
             DestroyDraggable();
         }
 

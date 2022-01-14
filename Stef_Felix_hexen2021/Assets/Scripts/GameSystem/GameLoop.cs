@@ -9,9 +9,10 @@ using GameSystem.States;
 using GameSystem.Abilities;
 using AbilitySystem;
 
+
 namespace GameSystem
 {
-    public class GameLoop : SingletonMonoBehaviour<GameLoop> 
+    public class GameLoop : SingletonMonoBehaviour<GameLoop>
     {
         [SerializeField] private PositionHelper _positionHelper = null;
 
@@ -65,6 +66,7 @@ namespace GameSystem
         internal void OnExitTile(Tile holdTile) => _gameStateMachine.CurrentState.OnExitTile(holdTile);
         internal void OnAbilityBeginDrag(string ability) => _gameStateMachine.CurrentState.OnAbilityBeginDrag(ability);
         internal void OnAbilityReleased(Tile holdTile) => _gameStateMachine.CurrentState.OnAbilityReleased(holdTile);
+        internal void OnAbilityReleasedEmpty() => _gameStateMachine.CurrentState.OnAbilityReleasedEmpty();
 
         private void ConnectPlayer()
         {
@@ -91,5 +93,6 @@ namespace GameSystem
             //_gameStateMachine.RegisterState(GameStates.Enemy, enemyTurnState);
             //_gameStateMachine.SetStartState(GameStates.Enemy);
         }
+
     }
 }

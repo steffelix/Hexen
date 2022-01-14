@@ -45,15 +45,7 @@ namespace GameSystem.States
                 _board.Highlight(_validTiles);
             }
             else return;
-            //{
-            //    var hexPieceView = _board.PieceAt(holdTile);
-
-            //    if (hexPieceView == null || hexPieceView.FinalPosition == null) return;
-
-            //    _validTiles = _boardCalculationHelper.GetPositions(holdTile, hexPieceView.FinalPosition);
-
-            //    _board.Highlight(_validTiles);
-            //}
+            
         }
 
         public override void OnExitTile(Tile holdTile)
@@ -69,22 +61,22 @@ namespace GameSystem.States
             _draggedAbility = _deck.GetAbilityAction(ability);
         }
 
+        public override void OnAbilityReleasedEmpty()
+        {
+            _draggedAbility = null;
+
+        }
+
         public override void OnAbilityReleased(Tile holdTile)
         {
             if (_draggedAbility == null) 
             {
-                Debug.Log("_draggedAbility == null");
                 return;
                 
             }
 
             _board.UnHighlight(_validTiles);
 
-            if (holdTile == null)
-            {
-                Debug.Log("holdTile == null");
-
-            }
 
             if (!_validTiles.Contains(holdTile))
             {
