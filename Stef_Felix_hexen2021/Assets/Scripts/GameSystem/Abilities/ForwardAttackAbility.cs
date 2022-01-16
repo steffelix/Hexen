@@ -25,12 +25,12 @@ namespace GameSystem.Abilities
 
             foreach (var direction in (OffsetDirection[])Enum.GetValues(typeof(OffsetDirection)))
             {
-                var tileList2 = _boardCalculationHelper.GetLines(playerTile, direction);
+                var tileList2 = _boardCalculationHelper.GetLines(playerTile, direction); // return all directions
                 if (tileList2.Contains(holdTile))
                 {
                     return tileList2;
                 }
-                tileList1.AddRange(tileList2);
+                tileList1.AddRange(tileList2); // add all directions(tileList2) to tileList1
             }
             return tileList1;
         }

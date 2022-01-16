@@ -28,7 +28,7 @@ namespace GameSystem.BoardCalculations
             _offsetValues.Add(OffsetDirection.DownRight, new CubeOffset(0, -1, 1));
         }
 
-        public Position Add(Tile tile, Position direction)
+        public Position Add(Tile tile, Position direction) // return position in the direction of the tile
         {
             var tilePos = tile.Position;
 
@@ -92,7 +92,7 @@ namespace GameSystem.BoardCalculations
         public List<Tile> GetRadius(Tile centerTile, int radius)
         {
             List<Tile> tileList = new List<Tile>();
-            Position goPosition = Scale(centerTile, OffsetDirection.Left, 1);
+            Position goPosition = Scale(centerTile, OffsetDirection.Left, radius);
 
             Tile startTile = _board.TileAt(goPosition);
             if (startTile != null)
@@ -116,7 +116,7 @@ namespace GameSystem.BoardCalculations
             return tileList;
         }
 
-        public int TrueModulo(int nr, int mod) //modulo for negative LHS 
+        public int TrueModulo(int nr, int mod)
         {
             return (nr % mod + mod) % mod;
         }

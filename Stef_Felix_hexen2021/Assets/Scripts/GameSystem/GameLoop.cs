@@ -55,11 +55,13 @@ namespace GameSystem
             Deck.AddAbilityAction("SwingAttack", new SwingAttackAbility(Board));
             Deck.AddAbilityAction("Teleport", new TeleportAbility(Board));
             Deck.AddAbilityAction("Knockback", new KnockbackAbility(Board));
-            
+            Deck.AddAbilityAction("Tornado", new TornadoAbility(Board));
+
             Deck.AddAbility("ForwardAttack", 3);
             Deck.AddAbility("SwingAttack", 3);
             Deck.AddAbility("Teleport", 3);
             Deck.AddAbility("Knockback", 3);
+            Deck.AddAbility("Tornado", 3);
         }
 
         internal void OnEnterTile(Tile holdTile) => _gameStateMachine.CurrentState.OnEnterTile(holdTile);
@@ -88,10 +90,6 @@ namespace GameSystem
             var playerTurnState = new PlayerTurnState(Board, Deck, ActiveHand, _playerView);
             _gameStateMachine.RegisterState(GameStates.Player, playerTurnState);
             _gameStateMachine.SetStartState(GameStates.Player);
-
-            //var enemyTurnState = new EnemyTurnState(Board, _playerView);
-            //_gameStateMachine.RegisterState(GameStates.Enemy, enemyTurnState);
-            //_gameStateMachine.SetStartState(GameStates.Enemy);
         }
 
     }

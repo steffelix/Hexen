@@ -10,12 +10,10 @@ namespace GameSystem.Abilities
     public class TeleportAbility : AbilityBase
     {
         private readonly Board<HexPieceView> _board;
-        //private BoardCalculationHelper _boardCalculationHelper;
 
         public TeleportAbility(Board<HexPieceView> board)
         {
             _board = board;
-            //_boardCalculationHelper = new BoardCalculationHelper(_board);
         }
         public override List<Tile> OnTileHold(Tile playerTile, Tile holdTile)
         {
@@ -26,10 +24,6 @@ namespace GameSystem.Abilities
                 tileList.Add(holdTile);
             }
             return tileList;
-
-            ////Used for testing valid neighbour tiles
-            //var validTiles = _boardCalculationHelper.GetNeighbours(playerTile);
-            //return validTiles;
         }
 
         public override void OnTileRelease(Tile playerTile, Tile holdTile)
