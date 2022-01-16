@@ -20,6 +20,8 @@ namespace GameSystem
         private PlayerView _playerView;
         private StateMachine<GameStateBase> _gameStateMachine;
 
+        [SerializeField]
+        private GameObject _enemyPrefab;
 
         public event EventHandler Initialized;
 
@@ -81,6 +83,17 @@ namespace GameSystem
             {
                 Board.Place(Board.TileAt(_positionHelper.ToBoardPosition(_boardView.transform, enemyView.transform.position)), enemyView);
             }
+        }
+
+        public void SpawnEnemy(Tile tile)
+        {
+            var enemy = Instantiate(_enemyPrefab, _positionHelper.ToLocalPosition(tile.Position), Quaternion.identity);
+
+            enemy.transform.position = transform.TransformPoint(enemy.transform.position);
+
+            //places already so that no enemies will spawn on top of eachother
+            Board.Place(tile, enemy.GetComponent<EnemyView>());
+
         }
 
         private void ConnectGameStates()

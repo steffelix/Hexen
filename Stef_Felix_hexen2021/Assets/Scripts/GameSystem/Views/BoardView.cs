@@ -9,6 +9,8 @@ namespace GameSystem.Views
         [SerializeField] private TileViewFactory _tileViewFactory;
         private Board<HexPieceView> _model;
 
+        public int EnemyAmount = 0;
+        public bool EnemiesReached;
         public void Start()
         {
             GameLoop.Instance.Initialized += OnGameLoopInitialized;
