@@ -26,6 +26,16 @@ namespace BoardSystem.Editor
             var board = game.Board;
             var random = new Random();
 
+            if (GUILayout.Button("Remove Hex Board"))
+            {
+                // remove board
+                var tiles = FindObjectsOfType<TileView>();
+
+                foreach(TileView t in tiles)
+                {
+                    DestroyImmediate(t.gameObject);
+                }
+            }
 
             if (GUILayout.Button("Generate Hex Board"))
             {

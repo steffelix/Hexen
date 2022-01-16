@@ -1,0 +1,2 @@
+Er is een bug met mijn Tiles, waardoor deze niet goed selecteren (highlighten) wanneer Unity opnieuw opstart.
+Als u het bord verwijderd en opnieuw genereert, werkt alles naar behoren.
