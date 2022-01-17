@@ -1,4 +1,6 @@
 using BoardSystem;
+using GameSystem.States;
+using StateSystem;
 using UnityEngine;
 
 namespace GameSystem.Views
@@ -7,6 +9,7 @@ namespace GameSystem.Views
     {
         [SerializeField] private PositionHelper _positionHelper = null;
         private Transform _boardView;
+        public StateMachine<GameStateBase> PlayerStateMachine;
 
         private void Start()
         {
@@ -20,6 +23,7 @@ namespace GameSystem.Views
         {
             Destroy(gameObject);
             Debug.Log("player tasks");
+            PlayerStateMachine.MoveTo("End");
         }
 
     }

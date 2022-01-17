@@ -17,12 +17,10 @@ MonoBehaviour:
   - {fileID: 8181907196083400, guid: d688cfec29746584aafba6e3d6d8042c, type: 3}
   - {fileID: 8181907196083400, guid: d36924f6c033c8644a8833aca5bda56b, type: 3}
   - {fileID: 7180808833972202498, guid: 284bd9bf7f02c464f8d3ca3d4bb544b0, type: 3}
-  - {fileID: 7180808833972202498, guid: 7bf521a3f1a924e4f9c3e689027b3145, type: 3}
-  - {fileID: 7180808833972202498, guid: 7bf521a3f1a924e4f9c3e689027b3145, type: 3}
+  - {fileID: 7180808833972202498, guid: 47047b08a01b7f44bbbef6b4d26901b8, type: 3}
   _abilityNames:
   - ForwardAttack
   - Knockback
   - SwingAttack
   - Teleport
-  - Tornado
   - Bomb

@@ -4,6 +4,7 @@ using BoardSystem;
 using GameSystem.Abilities;
 using GameSystem.BoardCalculations;
 using GameSystem.Views;
+using StateSystem;
 using UnityEngine;
 
 namespace GameSystem.States
@@ -21,8 +22,9 @@ namespace GameSystem.States
         private string _ability;
         private int _amountOfAbilitiesUsed;
 
+        private StateMachine<GameStateBase> _stateMachine;
 
-        public PlayerTurnState(Board<HexPieceView> board, Deck<AbilityBase> pile, ActiveHand<AbilityBase> activeHand, PlayerView player, Canvas canvas)
+        public PlayerTurnState(Board<HexPieceView> board, Deck<AbilityBase> pile, ActiveHand<AbilityBase> activeHand, PlayerView player, Canvas canvas, StateMachine<GameStateBase> stateMachine)
         {
             _board = board;
             _deck = pile;
@@ -30,6 +32,7 @@ namespace GameSystem.States
             _player = player;
             _boardCalculationHelper = new BoardCalculationHelper(board);
             canvasState = canvas;
+            _stateMachine = stateMachine;
         }
 
         public override void OnEnter()
@@ -37,11 +40,15 @@ namespace GameSystem.States
             base.OnEnter();
             _amountOfAbilitiesUsed = 0;
 
+            canvasState.enabled = true;
+
             // enable UI
         }
         public override void OnExit()
         {
             base.OnExit();
+
+            canvasState.enabled = false;
 
             // disable UI
         }
@@ -90,7 +97,6 @@ namespace GameSystem.States
 
             if (!_validTiles.Contains(holdTile))
             {
-                Debug.Log("_validTiles.Contains(holdTile)");
 
                 _draggedAbility = null;
 

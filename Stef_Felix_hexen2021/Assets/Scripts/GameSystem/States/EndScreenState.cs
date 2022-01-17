@@ -1,4 +1,3 @@
-﻿
 using UnityEngine;
 using UnityEngine.UI;
 using StateSystem;
@@ -6,14 +5,12 @@ using GameSystem.States;
 
 namespace GameSystem.States
 {
-    class StartScreenState : GameStateBase
+    class EndScreenState : GameStateBase
     {
-        private Button _button;
         private StateMachine<GameStateBase> _stateMachine;
-        public StartScreenState(Canvas canvas, StateMachine<GameStateBase> stateMachine)
+        public EndScreenState(Canvas canvas, StateMachine<GameStateBase> stateMachine)
         {
             canvasState = canvas;
-            _stateMachine = stateMachine;
         }
 
         public override void OnEnter()
@@ -21,8 +18,6 @@ namespace GameSystem.States
             base.OnEnter();
 
             canvasState.enabled = true;
-            _button = canvasState.GetComponentInChildren<Button>();
-            _button.onClick.AddListener(OnButtonClick);
 
 
             // enable UI
@@ -38,7 +33,6 @@ namespace GameSystem.States
 
         private void OnButtonClick()
         {
-            _stateMachine.MoveTo("Play");
         }
     }
 }

@@ -44,6 +44,8 @@ namespace GameSystem
             ConnectEnemies();
 
             ConnectGameStates();
+            ConnectPlayer();
+
 
             OnInitialized(EventArgs.Empty);
         }
@@ -80,6 +82,7 @@ namespace GameSystem
         private void ConnectPlayer()
         {
             _playerView = FindObjectOfType<PlayerView>();
+            _playerView.PlayerStateMachine = _gameStateMachine;
             Board.Place(Board.TileAt(_positionHelper.ToBoardPosition(_boardView.transform, _playerView.transform.position)), _playerView);
         }
         private void ConnectEnemies()
@@ -105,12 +108,14 @@ namespace GameSystem
         {
             _gameStateMachine = new StateMachine<GameStateBase>();
 
-            var startScreenState = new StartScreenState(_startCanvas);
-            var playerTurnState = new PlayerTurnState(Board, Deck, ActiveHand, _playerView, _playCanvas);
+            var startScreenState = new StartScreenState(_startCanvas, _gameStateMachine);
+            var playerTurnState = new PlayerTurnState(Board, Deck, ActiveHand, _playerView, _playCanvas, _gameStateMachine);
+            var endScreenState = new EndScreenState(_endCanvas, _gameStateMachine);
 
 
             _gameStateMachine.RegisterState(GameStates.Start, startScreenState);
             _gameStateMachine.RegisterState(GameStates.Player, playerTurnState);
+            _gameStateMachine.RegisterState(GameStates.End, endScreenState);
 
             _gameStateMachine.SetStartState(GameStates.Start);
         }
