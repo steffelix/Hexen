@@ -43,11 +43,18 @@ namespace GameSystem
             ConnectPlayer();
             ConnectEnemies();
 
+
             ConnectGameStates();
             ConnectPlayer();
 
-
             OnInitialized(EventArgs.Empty);
+
+            // tried to fix the bug where the tiles don't select properly on Unity Restart,
+            // these methods resulted in more errors :(
+
+            //RemoveBoard();
+            //CreateBoard();
+
         }
 
         
@@ -56,6 +63,28 @@ namespace GameSystem
             EventHandler handler = Initialized;
             handler?.Invoke(this, arg);
         }
+
+        private void CreateBoard()
+        {
+            var tileViewFactory = _boardView.TileViewFactory;
+            Debug.Assert(_boardView != null, nameof(_boardView) + " != null");
+
+            foreach (var tile in Board.Tiles)
+            {
+                tileViewFactory?.CreateTileView(tile, _boardView.transform);
+            }
+        }
+
+        private static void RemoveBoard()
+        {
+            var tiles = FindObjectsOfType<TileView>();
+
+            foreach (TileView t in tiles)
+            {
+                DestroyImmediate(t.gameObject);
+            }
+        }
+
         private void AddAbilities()
         {
             Deck.AddAbilityAction("ForwardAttack", new ForwardAttackAbility(Board));

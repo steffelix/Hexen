@@ -6,11 +6,10 @@ namespace GameSystem.Views
 {
     public class BoardView : MonoBehaviour
     {
-        [SerializeField] private TileViewFactory _tileViewFactory;
+        [SerializeField] public TileViewFactory TileViewFactory;
         private Board<HexPieceView> _model;
 
         public int EnemyAmount = 0;
-        public bool EnemiesReached;
         public void Start()
         {
             GameLoop.Instance.Initialized += OnGameLoopInitialized;

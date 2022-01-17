@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using StateSystem;
 using GameSystem.States;
+using GameSystem.Views;
+using System;
+using UnityEditor;
 
 namespace GameSystem.States
 {
@@ -38,6 +41,7 @@ namespace GameSystem.States
 
         private void OnButtonClick()
         {
+
             _stateMachine.MoveTo("Play");
         }
     }

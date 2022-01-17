@@ -20,7 +20,7 @@ namespace BoardSystem.Editor
             base.OnInspectorGUI();
 
             var boardView = target as BoardView;
-            var tileViewFactorySp = serializedObject.FindProperty("_tileViewFactory");
+            var tileViewFactorySp = serializedObject.FindProperty("TileViewFactory");
             var tileViewFactory = tileViewFactorySp.objectReferenceValue as TileViewFactory;
             var game = GameLoop.Instance;
             var board = game.Board;
