@@ -20,8 +20,11 @@ namespace GameSystem
         private PlayerView _playerView;
         private StateMachine<GameStateBase> _gameStateMachine;
 
-        [SerializeField]
-        private GameObject _enemyPrefab;
+        [SerializeField] private GameObject _enemyPrefab;
+
+        [SerializeField] private Canvas _startCanvas;
+        [SerializeField] private Canvas _playCanvas;
+        [SerializeField] private Canvas _endCanvas;
 
         public event EventHandler Initialized;
 
@@ -34,7 +37,7 @@ namespace GameSystem
             Deck = new Deck<AbilityBase>();
             AddAbilities();
 
-            //ActiveHand = Deck.CreateActiveHand(5);
+            ActiveHand = Deck.CreateActiveHand(5);
             _boardView = FindObjectOfType<BoardView>();
 
             ConnectPlayer();
@@ -66,11 +69,13 @@ namespace GameSystem
             Deck.AddAbility("Bomb", 3);
         }
 
+        
         internal void OnEnterTile(Tile holdTile) => _gameStateMachine.CurrentState.OnEnterTile(holdTile);
         internal void OnExitTile(Tile holdTile) => _gameStateMachine.CurrentState.OnExitTile(holdTile);
         internal void OnAbilityBeginDrag(string ability) => _gameStateMachine.CurrentState.OnAbilityBeginDrag(ability);
         internal void OnAbilityReleased(Tile holdTile) => _gameStateMachine.CurrentState.OnAbilityReleased(holdTile);
         internal void OnAbilityReleasedEmpty() => _gameStateMachine.CurrentState.OnAbilityReleasedEmpty();
+
 
         private void ConnectPlayer()
         {
@@ -100,13 +105,12 @@ namespace GameSystem
         {
             _gameStateMachine = new StateMachine<GameStateBase>();
 
-            var startScreenState = new StartScreenState();
-            var playerTurnState = new PlayerTurnState(Board, Deck, ActiveHand, _playerView);
+            var startScreenState = new StartScreenState(_startCanvas);
+            var playerTurnState = new PlayerTurnState(Board, Deck, ActiveHand, _playerView, _playCanvas);
 
 
-            _gameStateMachine.RegisterState(GameStates.Player, playerTurnState);
             _gameStateMachine.RegisterState(GameStates.Start, startScreenState);
-
+            _gameStateMachine.RegisterState(GameStates.Player, playerTurnState);
 
             _gameStateMachine.SetStartState(GameStates.Start);
         }

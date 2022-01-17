@@ -1,5 +1,6 @@
 using BoardSystem;
 using StateSystem;
+using UnityEngine;
 
 namespace GameSystem.States
 {
@@ -7,6 +8,7 @@ namespace GameSystem.States
     public abstract class GameStateBase : IState<GameStateBase>
     {
         public StateMachine<GameStateBase> StateMachine { get; set; }
+        public Canvas canvasState { get; set; }
 
         public virtual void OnEnter() { }
 
@@ -20,5 +22,7 @@ namespace GameSystem.States
 
         public virtual void OnAbilityReleased(Tile holdTile) { }
         public virtual void OnAbilityReleasedEmpty() { }
+        public virtual void OnUIAdded() { }
+        public virtual void OnUIRemoved() { }
     }
 }
