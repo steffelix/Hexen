@@ -35,11 +35,17 @@ namespace GameSystem.Views
         {
             _model = GameLoop.Instance.Board.TileAt(_positionHelper.ToBoardPosition(transform.position));
             _model.HighlightStatusChanged += OnModelHighlightStatusChanged;
+            _model.TileExploded += OnModelTileExploded;
         }
 
         private void OnModelHighlightStatusChanged(object sender, EventArgs e)
         {
             _meshRenderer.material = _model.IsHighlighted ? _highlightMaterial : _originalMaterial;
+        }
+
+        private void OnModelTileExploded(object sender, EventArgs e)
+        {
+            Destroy(this.gameObject);
         }
 
         private void SetModelSize()

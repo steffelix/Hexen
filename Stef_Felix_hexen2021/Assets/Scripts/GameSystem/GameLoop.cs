@@ -57,13 +57,13 @@ namespace GameSystem
             Deck.AddAbilityAction("SwingAttack", new SwingAttackAbility(Board));
             Deck.AddAbilityAction("Teleport", new TeleportAbility(Board));
             Deck.AddAbilityAction("Knockback", new KnockbackAbility(Board));
-            Deck.AddAbilityAction("Tornado", new TornadoAbility(Board));
+            Deck.AddAbilityAction("Bomb", new BombAbility(Board));
 
             Deck.AddAbility("ForwardAttack", 3);
             Deck.AddAbility("SwingAttack", 3);
             Deck.AddAbility("Teleport", 3);
             Deck.AddAbility("Knockback", 3);
-            Deck.AddAbility("Tornado", 3);
+            Deck.AddAbility("Bomb", 3);
         }
 
         internal void OnEnterTile(Tile holdTile) => _gameStateMachine.CurrentState.OnEnterTile(holdTile);

@@ -34,6 +34,10 @@ namespace BoardSystem
                 }
             }
         }
+        public void RemoveTile(Tile tile)
+        {
+            _tiles.Remove(tile.Position);
+        }
 
         public Tile TileAt(Position position)
         {
@@ -103,6 +107,14 @@ namespace BoardSystem
             foreach (var tile in tiles)
             {
                 tile.IsHighlighted = false;
+            }
+        }
+
+        public void Explode(List<Tile> tiles)
+        {
+            foreach(var tile in tiles)
+            {
+                
             }
         }
 

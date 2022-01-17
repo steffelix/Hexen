@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace BoardSystem
 {
@@ -7,6 +8,7 @@ namespace BoardSystem
         private bool _isHighlighted;
 
         public event EventHandler HighlightStatusChanged;
+        public event EventHandler TileExploded;
         public Position Position { get; }
 
         public bool IsHighlighted
@@ -26,5 +28,12 @@ namespace BoardSystem
             EventHandler handler = HighlightStatusChanged;
             handler?.Invoke(this, args);
         }
+        public void OnTileExploded(EventArgs args)
+        {
+            EventHandler handler = TileExploded;
+            handler?.Invoke(this, args);
+        }
+
+
     }
 }
