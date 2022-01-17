@@ -31,8 +31,6 @@ namespace GameSystem.States
             // disable UI
         }
 
-        private void OnButtonClick()
-        {
-        }
+        
     }
 }
