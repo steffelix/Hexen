@@ -16,7 +16,11 @@ namespace GameSystem.Views
         {
             transform.position = _positionHelper.ToWorldPosition(_boardView, toTile.Position);
         }
-        public override void Taken() { }
+        public override void Taken() 
+        {
+            Destroy(gameObject);
+
+        }
 
     }
 }
