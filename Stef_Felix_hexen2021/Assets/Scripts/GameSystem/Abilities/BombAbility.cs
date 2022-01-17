@@ -25,10 +25,8 @@ namespace GameSystem.Abilities
         {
             var tileList = _boardCalculationHelper.GetRadius(holdTile, 1);
 
-            if (_board.PieceAt(holdTile) == null)
-            {
-                tileList.Add(holdTile);
-            }
+            tileList.Add(holdTile);
+            
             return tileList;
         }
 

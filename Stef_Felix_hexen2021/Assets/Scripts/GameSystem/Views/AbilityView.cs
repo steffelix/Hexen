@@ -14,7 +14,6 @@ namespace GameSystem.Views
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            Debug.Log(Model);
             LocateDraggingTransform();
             CreateDraggable();
             UpdateDraggable(eventData);

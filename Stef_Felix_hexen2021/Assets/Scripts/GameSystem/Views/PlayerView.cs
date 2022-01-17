@@ -19,7 +19,7 @@ namespace GameSystem.Views
         public override void Taken() 
         {
             Destroy(gameObject);
-
+            Debug.Log("player tasks");
         }
 
     }

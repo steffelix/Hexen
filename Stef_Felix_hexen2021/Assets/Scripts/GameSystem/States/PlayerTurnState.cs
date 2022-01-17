@@ -21,6 +21,7 @@ namespace GameSystem.States
         private string _ability;
         private int _amountOfAbilitiesUsed;
 
+
         public PlayerTurnState(Board<HexPieceView> board, Deck<AbilityBase> pile, ActiveHand<AbilityBase> activeHand, PlayerView player)
         {
             _board = board;
@@ -34,6 +35,12 @@ namespace GameSystem.States
         {
             base.OnEnter();
             _amountOfAbilitiesUsed = 0;
+
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+
         }
 
         public override void OnEnterTile(Tile holdTile)

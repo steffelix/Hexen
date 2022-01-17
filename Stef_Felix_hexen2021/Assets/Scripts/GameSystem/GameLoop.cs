@@ -34,7 +34,7 @@ namespace GameSystem
             Deck = new Deck<AbilityBase>();
             AddAbilities();
 
-            ActiveHand = Deck.CreateActiveHand(5);
+            //ActiveHand = Deck.CreateActiveHand(5);
             _boardView = FindObjectOfType<BoardView>();
 
             ConnectPlayer();
@@ -100,9 +100,15 @@ namespace GameSystem
         {
             _gameStateMachine = new StateMachine<GameStateBase>();
 
+            var startScreenState = new StartScreenState();
             var playerTurnState = new PlayerTurnState(Board, Deck, ActiveHand, _playerView);
+
+
             _gameStateMachine.RegisterState(GameStates.Player, playerTurnState);
-            _gameStateMachine.SetStartState(GameStates.Player);
+            _gameStateMachine.RegisterState(GameStates.Start, startScreenState);
+
+
+            _gameStateMachine.SetStartState(GameStates.Start);
         }
 
     }
